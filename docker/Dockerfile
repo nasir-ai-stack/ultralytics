@@ -1,8 +1,9 @@
-# Ultralytics YOLO 🚀, AGPL-3.0 license
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
 # Builds ultralytics/ultralytics:latest image on DockerHub https://hub.docker.com/r/ultralytics/ultralytics
 # Image is CUDA-optimized for YOLO11 single/multi-GPU training and inference
 
-# Start FROM PyTorch image https://hub.docker.com/r/pytorch/pytorch or nvcr.io/nvidia/pytorch:23.03-py3
+# Start FROM PyTorch image https://hub.docker.com/r/pytorch/pytorch or nvcr.io/nvidia/pytorch:25.02-py3
 FROM pytorch/pytorch:2.6.0-cuda12.6-cudnn9-runtime
 
 # Set environment variables
@@ -41,7 +42,7 @@ ADD https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt .
 
 # Install pip packages
 RUN pip install uv
-RUN uv pip install --system -e ".[export]" "albumentations>=1.4.6" comet pycocotools
+RUN uv pip install --system -e ".[export]" "albumentations>=1.4.6" pycocotools
 
 # Run exports to AutoInstall packages
 # Edge TPU export fails the first time so is run twice here
